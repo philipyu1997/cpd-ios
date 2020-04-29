@@ -1,4 +1,4 @@
-# WhatFlower
+# CDP
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -9,7 +9,7 @@
 ## Overview
 ### Description
 
-CPD is an image recognition app that determines whether an image is of a cat, dog, or panda using the [Kaggle Animal Image Data Set](https://www.kaggle.com/ashishsaxena2209/animal-image-datasetdog-cat-and-panda).
+CDP is an image recognition app that determines whether an image is of a cat, dog, or panda using the [Kaggle Animal Image Data Set](https://www.kaggle.com/ashishsaxena2209/animal-image-datasetdog-cat-and-panda).
 
 ## Product Spec
 ### User Stories
