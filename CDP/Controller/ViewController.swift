@@ -14,7 +14,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // Outlets
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var imageLabel: UILabel!
     
     // Properties
     let imgPicker = UIImagePickerController()
@@ -29,7 +28,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         if let userPickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = userPickedImage
