@@ -16,13 +16,12 @@ CDP is an image recognition app that determines whether an image is of a cat, do
 
 - [X] User shall be able to select any image from their photo library for image recognition classification.
 - [X] User shall be able to see the animal name of the selected animal image.
-- [X] User shall be able to see the confidence percentage of the machine learning model.
 
 ## App Walkthrough
 
 Here's a GIF of how the app works:
 
-<img src="ADD_GIF_HERE" width=250><br>
+<img src="https://user-images.githubusercontent.com/35745973/80569499-e86c9880-89ad-11ea-9298-11cc0887e478.gif" width=250><br>
 
 ## Credits
 
