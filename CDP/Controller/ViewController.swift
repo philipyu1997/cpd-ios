@@ -7,12 +7,41 @@
 //
 
 import UIKit
+import CoreML
+import Vision
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    // Outlets
+    @IBOutlet weak var imageView: UIImageView!
+    
+    // Properties
+    let imgPicker = UIImagePickerController()
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        imgPicker.delegate = self
+        imgPicker.sourceType = .photoLibrary
+        imgPicker.allowsEditing = false
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let userPickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = userPickedImage
+        }
+        
+        imgPicker.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
+        
+        present(imgPicker, animated: true, completion: nil)
+        
     }
 
 }
