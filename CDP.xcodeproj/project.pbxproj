@@ -87,9 +87,9 @@
 		72C8006724594A5C00E5F78F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				72C8005724594A3600E5F78F /* Main.storyboard */,
 				72C8005A24594A3700E5F78F /* Assets.xcassets */,
 				72C8005C24594A3700E5F78F /* LaunchScreen.storyboard */,
+				72C8005724594A3600E5F78F /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";

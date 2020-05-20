@@ -10,41 +10,48 @@ import UIKit
 import CoreML
 import Vision
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate {
     
-    // Outlets
+    // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
     
-    // Properties
-    let imgPicker = UIImagePickerController()
+    // MARK: - Properties
+    private let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        imgPicker.delegate = self
-        imgPicker.sourceType = .photoLibrary
-        imgPicker.allowsEditing = false
+        // Set class as delegate
+        imagePicker.delegate = self
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    // MARK: - IBAction Section
+    
+    @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
         
-        if let userPickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = userPickedImage
+        imagePicker.allowsEditing = false
+        
+        // Present camera, if available
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            print("Camera is available 📸")
+            imagePicker.sourceType = .camera
             
-            guard let ciImage = CIImage(image: userPickedImage) else {
-                fatalError("Could not convert UIImage to CIImage.")
-            }
-            
-            detect(image: ciImage)
+            // Present photo library
+        } else {
+            print("Camera 🚫 available so we will use photo library instead")
+            imagePicker.sourceType = .photoLibrary
+            // Present imagePicker source type (either camera or library)
         }
         
-        imgPicker.dismiss(animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
         
     }
     
-    func detect(image: CIImage) {
+    // MARK: - Private Function Section
+    
+    private func detect(image: CIImage) {
         
         // Create model using PetImageClassifier
         guard let model = try? VNCoreMLModel(for: PetImageClassifier().model) else {
@@ -76,9 +83,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
+}
+
+extension ViewController: UIImagePickerControllerDelegate {
+    
+    // MARK: - UIImagePickerControllerDelegate Section
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
-        present(imgPicker, animated: true, completion: nil)
+        if let userPickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = userPickedImage
+            
+            guard let ciImage = CIImage(image: userPickedImage) else {
+                fatalError("Could not convert UIImage to CIImage.")
+            }
+            
+            detect(image: ciImage)
+        }
+        
+        imagePicker.dismiss(animated: true, completion: nil)
         
     }
     
