@@ -21,7 +21,7 @@ CDP is an image recognition app that determines whether an image is of a cat, do
 
 Here's a GIF of how the app works:
 
-<img src="https://github.com/py415/app-resources/blob/master/ios/ios-cdp.gif" width=250>
+<img src="https://raw.githubusercontent.com/py415/app-resources/master/ios/ios-cdp.gif" width="250" />
 
 ## Credits
 
